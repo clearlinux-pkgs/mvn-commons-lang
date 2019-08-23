@@ -4,7 +4,7 @@
 #
 Name     : mvn-commons-lang
 Version  : 2.1
-Release  : 1
+Release  : 2
 URL      : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.1/commons-lang-2.1.jar
 Source0  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.1/commons-lang-2.1.jar
 Source1  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.1/commons-lang-2.1.pom
@@ -12,12 +12,15 @@ Source2  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.3/co
 Source3  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.3/commons-lang-2.3.pom
 Source4  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.4/commons-lang-2.4.jar
 Source5  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.4/commons-lang-2.4.pom
-Source6  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
-Source7  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.pom
+Source6  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.5/commons-lang-2.5.jar
+Source7  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.5/commons-lang-2.5.pom
+Source8  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
+Source9  : https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: mvn-commons-lang-data = %{version}-%{release}
+Requires: mvn-commons-lang-license = %{version}-%{release}
 
 %description
 No detailed description available
@@ -30,34 +33,51 @@ Group: Data
 data components for the mvn-commons-lang package.
 
 
+%package license
+Summary: license components for the mvn-commons-lang package.
+Group: Default
+
+%description license
+license components for the mvn-commons-lang package.
+
+
 %prep
+%setup -q -n META-INF
 
 %build
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-commons-lang
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/mvn-commons-lang/LICENSE.txt
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.1
-cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.1
+cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.1/commons-lang-2.1.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.1
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.1
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.1/commons-lang-2.1.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.3
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.3
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.3/commons-lang-2.3.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.3
-cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.3
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.3/commons-lang-2.3.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.4
-cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.4
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.4/commons-lang-2.4.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.4
-cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.4
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.4/commons-lang-2.4.pom
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.5
+cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.5/commons-lang-2.5.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.5
+cp %{SOURCE7} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.5/commons-lang-2.5.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.6
-cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.6
+cp %{SOURCE8} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.6
-cp %{SOURCE7} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.6
+cp %{SOURCE9} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.pom
 
 
 %files
@@ -71,5 +91,11 @@ cp %{SOURCE7} %{buildroot}/usr/share/java/.m2/repository/commons-lang/commons-la
 /usr/share/java/.m2/repository/commons-lang/commons-lang/2.3/commons-lang-2.3.pom
 /usr/share/java/.m2/repository/commons-lang/commons-lang/2.4/commons-lang-2.4.jar
 /usr/share/java/.m2/repository/commons-lang/commons-lang/2.4/commons-lang-2.4.pom
+/usr/share/java/.m2/repository/commons-lang/commons-lang/2.5/commons-lang-2.5.jar
+/usr/share/java/.m2/repository/commons-lang/commons-lang/2.5/commons-lang-2.5.pom
 /usr/share/java/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
 /usr/share/java/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-commons-lang/LICENSE.txt
